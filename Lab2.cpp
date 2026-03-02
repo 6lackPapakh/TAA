@@ -34,7 +34,7 @@ vector<RLE_Pair> rle_encode(const vector<int>& data) {
             count = 1;
         }
     }
-    // Last element
+
     if (current > 255) {
         int temp = current;
         while (temp > 255) {
@@ -71,7 +71,6 @@ vector<int> rle_decode(const vector<RLE_Pair>& encoded) {
     return decoded;
 }
 
-// MAIN
 int main() {
     int n;
     cout << "How many elements do you want to enter in the array? ";
@@ -85,20 +84,19 @@ int main() {
     for (int i = 0; i < n; ++i) {
         cin >> original[i];
     }
-    // Encode
+
     vector<RLE_Pair> encoded = rle_encode(original);
     cout << "\n[ ENCODE ]\n";
     for (const auto& p : encoded) {
         cout << "[" << p.count << "," << p.value << "] ";
     }
     cout << "\n";
-    // Decode
+
     vector<int> decoded = rle_decode(encoded);
     cout << "\n[ DECODE ]\n";
     for (int x : decoded) {
         cout << x << " ";
     }
-    // Verification
     cout << "\n\n[ VERIFICATION ] ";
     if (original == decoded)
         cout << "YES ";
@@ -106,3 +104,4 @@ int main() {
         cout << "NO";
     return 0;
 }
+
